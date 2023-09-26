@@ -13,6 +13,7 @@ from time import sleep
 from datetime import timedelta
 import pathlib
 import string
+import os
 from PIL import Image
 import logging
 from selenium.webdriver.common.by import By
@@ -67,8 +68,9 @@ class RenderHelper:
         driver.get(self.htmlFile)
         sleep(1)
         driver.get_screenshot_as_file(self.currPath + '/dashboard.png')
-        driver.get_screenshot_as_file(path_to_server_image)
+        #driver.get_screenshot_as_file(path_to_server_image)
         self.logger.info(f'Screenshot captured and saved to file: {self.currPath}/dashboard.png')
+        os.system(f'convert {self.currPath}/dashboard.png -quality 85 -interlace none dash_converted.jpeg')
 
     def get_short_time(self, datetimeObj, is24hour=False):
         datetime_str = ''
