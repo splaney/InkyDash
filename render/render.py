@@ -16,6 +16,7 @@ import string
 from PIL import Image
 import logging
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
 
 class RenderHelper:
@@ -47,17 +48,27 @@ class RenderHelper:
             height=target_height)
 
     def get_screenshot(self, path_to_server_image):
+        """
         opts = Options()
         opts.add_argument("--headless")
         opts.add_argument("--hide-scrollbars");
         opts.add_argument('--force-device-scale-factor=1')
         driver = webdriver.Chrome(options=opts)
+        """
+        chromedriver_path = '/usr/bin/chromedriver'
+        service = Service()
+        service = webdriver.ChromeService(executable_path=chromedriver_path)
+        opts = webdriver.ChromeOptions()
+        opts.add_argument("--headless")
+        opts.add_argument("--hide-scrollbars");
+        opts.add_argument('--force-device-scale-factor=1')
+        driver = webdriver.Chrome(service=service, options=opts)
         self.set_viewport_size(driver)
         driver.get(self.htmlFile)
         sleep(1)
         driver.get_screenshot_as_file(self.currPath + '/dashboard.png')
         driver.get_screenshot_as_file(path_to_server_image)
-        self.logger.info('Screenshot captured and saved to file.')
+        self.logger.info(f'Screenshot captured and saved to file: {self.currPath}/dashboard.png')
 
     def get_short_time(self, datetimeObj, is24hour=False):
         datetime_str = ''
@@ -109,7 +120,7 @@ class RenderHelper:
             dayafter=(current_date + timedelta(days=2)).strftime("%A"),
             events_today=cal_events_list[0],
             events_tomorrow=cal_events_list[1],
-            events_dayafter=cal_events_list[2],
+            #events_dayafter=cal_events_list[2],
             # I'm choosing to show the forecast for the next hour instead of the current weather
             # current_weather_text=string.capwords(current_weather["weather"][0]["description"]),
             # current_weather_id=current_weather["weather"][0]["id"],

@@ -58,8 +58,11 @@ if __name__ == '__main__':
 
     # Retrieve Random Fact from OpenAI
     oaiModule = OAIModule()
-    topic = oaiModule.get_random_fact(currDate, openai_api_key)
-
+    #topic = oaiModule.get_random_fact(currDate, openai_api_key)
+    
+    
+    topic = {'title': 'All About Countries', 'prompt': 'Tell me an interesting fact about the country Haiti in 50 words that is suitable for children below 12', 'text': '\n\nHaiti is located in the Caribbean and is the only country in the world to have been created as a result of a successful slave revolution. It is full of amazing culture, art, music, and history. It is also the poorest country in the Western Hemisphere.'}
+    
     # Render Dashboard Image
     renderService = RenderHelper(imageWidth, imageHeight, rotateAngle)
     renderService.process_inputs(currDate, current_weather, hourly_forecast, daily_forecast, eventList, numCalDaysToShow,

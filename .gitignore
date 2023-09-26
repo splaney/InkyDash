@@ -1,3 +1,10 @@
+#project specific:
+gcal/credentials.json
+gcal/token.pickle
+config.json
+render/dashboard.html
+render/dashboard.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,13 +1,13 @@
 {
-  "displayTZ": "Asia/Hong_Kong",
+  "displayTZ": "America/New_York",
   "calendars": ["primary"],
   "numCalDaysToShow": 3,
-  "owm_api_key": "ENTER YOUR OWN API KEY HERE",
-  "lat": 22.3193,
-  "lon": 114.1694,
-  "imageWidth": 1200,
-  "imageHeight": 825,
+  "owm_api_key": "f521d34b354b2104d17d0a633237d9e6",
+  "lat": 42.3601,
+  "lon": -71.0942,
+  "imageWidth": 800,
+  "imageHeight": 480,
   "rotateAngle": 0,
-  "openai_api_key": "ENTER YOUR OWN API KEY HERE",
+  "openai_api_key": "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",
   "path_to_server_image": "/var/www/html/maginkdash.png"
 }
