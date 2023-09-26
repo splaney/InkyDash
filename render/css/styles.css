@@ -17,6 +17,12 @@ h1, h2, p, span, .h1, .h2, .p, .span  {
     font-family: "Lexend-Regular", sans-serif;
 }
 
+h1 { font-size: 75%; } #TODO NEXT
+h2 { font-size: 100%; }
+h2 { font-size: 150%; }
+h4 { font-size: 75%; }
+
+
 .list-unstyled {
     text-overflow: ellipsis;
 }
@@ -27,13 +33,13 @@ h1, h2, p, span, .h1, .h2, .p, .span  {
 
 .big-day {
     font-family: "TiltWarp-Regular", sans-serif;
-    font-size: 18rem;
+    font-size: 5rem;
 }
 
 .event {
     max-width: 95%;
     font-family: "Lexend-Regular", sans-serif;
-    font-size: 2.5rem;
+    font-size: 1rem;
     display: list-item;          /* This has to be "list-item"                                               */
     list-style-type: disc;     /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
     list-style-position: inside;
@@ -44,7 +50,7 @@ h1, h2, p, span, .h1, .h2, .p, .span  {
 
 .did-you-know {
     font-family: "Lexend-Light", sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     max-width: 95%;
 }
 
@@ -56,8 +62,11 @@ h1, h2, p, span, .h1, .h2, .p, .span  {
 }
 
 .add-padding {
-  padding-right:10;
-  padding-left:10;
+  padding-right:5;
+  padding-left:5;
   padding-top:0;
   padding-bottom:0;
 }
+@media (max-width: 800px){
+}
+
