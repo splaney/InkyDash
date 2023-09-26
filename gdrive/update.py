@@ -1,19 +1,17 @@
 from __future__ import print_function
-
 import os
 import pickle
-import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+# If modifying these SCOPES, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/drive.file']
 
-
-
-def upload_basic():
-    """Insert new file.
+def upload_revision():
+    """Update file.
     Returns : Id's of the file uploaded
 
     Load pre-authorized user credentials from the environment.
@@ -42,24 +40,30 @@ def upload_basic():
 
     service = build('drive', 'v3', credentials=creds)
 
+    # Specify the ID of the file you want to update.
+    file_id = '18tDjA9B-p_W7N_ks52ZLLu-4XvPI0X_W'
+
     try:
         # create drive api client
         service = build('drive', 'v3', credentials=creds)
 
-        file_metadata = {'name': 'download.jpeg'}
-        media = MediaFileUpload('download.jpeg',
+        media = MediaFileUpload('../dash_update.jpeg',
                                 mimetype='image/jpeg')
-        # pylint: disable=maybe-no-member
-        file = service.files().create(body=file_metadata, media_body=media,
-                                      fields='id').execute()
-        print(F'File ID: {file.get("id")}')
+        # Use the files().update method to upload a revision.
+        updated_file = service.files().update(
+            fileId=file_id,
+            media_body=media,
+        ).execute()
+
+        print(f'File ID: {updated_file.get("id")}')
 
     except HttpError as error:
-        print(F'An error occurred: {error}')
-        file = None
+        print(f'An error occurred: {error}')
+        updated_file = None
 
-    return file.get('id')
+    return updated_file.get('id') if updated_file else None
 
 
 if __name__ == '__main__':
-    upload_basic()
+    upload_revision()
+
