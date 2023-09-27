@@ -6,6 +6,7 @@ gdrive/token.pickle
 config.json
 render/dashboard.html
 render/dashboard.png
+dash_converted.jpeg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
