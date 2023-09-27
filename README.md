@@ -1,5 +1,10 @@
 
-# MagInkDash
+# InkyDash
+
+
+### Note: this is a forked repo designed to work with the Pimoroni Inky Frame 7. Full documentation coming soon
+
+
 This repo contains the code needed to drive an E-Ink Magic Dashboard that uses a Raspberry Pi to automatically retrieve updated content from Google Calendar, OpenWeatherMap and OpenAI ChatGPT, format them into the desired layout, before serving it to a battery powered E-Ink display (Inkplate 10). Note that the code has only been tested on the specific hardware mentioned, but can be easily modified to work with other hardware (for both the server or display).
 
 ![20230412_214635](https://user-images.githubusercontent.com/5581989/231482915-154db674-9301-465d-8352-d2c4400093eb.JPG)
