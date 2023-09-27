@@ -23,8 +23,8 @@ def upload_revision():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('../gcal/token.pickle'):
-        with open('../gcal/token.pickle', 'rb') as token:
+    if os.path.exists('gcal/token.pickle'):
+        with open('gcal/token.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -32,10 +32,10 @@ def upload_revision():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                '../gcal/credentials.json', SCOPES)
+                'gcal/credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('../gcal/token.pickle', 'wb') as token:
+        with open('gcal/token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
     service = build('drive', 'v3', credentials=creds)
@@ -47,7 +47,7 @@ def upload_revision():
         # create drive api client
         service = build('drive', 'v3', credentials=creds)
 
-        media = MediaFileUpload('../dash_update.jpeg',
+        media = MediaFileUpload('dash_converted.jpeg',
                                 mimetype='image/jpeg')
         # Use the files().update method to upload a revision.
         updated_file = service.files().update(

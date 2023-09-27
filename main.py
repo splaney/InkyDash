@@ -16,6 +16,7 @@ from gcal.gcal import GcalModule
 from owm.owm import OWMModule
 from oai.oai import OAIModule
 from render.render import RenderHelper
+from gdrive.update import upload_revision
 
 
 if __name__ == '__main__':
@@ -67,6 +68,7 @@ if __name__ == '__main__':
     renderService = RenderHelper(imageWidth, imageHeight, rotateAngle)
     renderService.process_inputs(currDate, current_weather, hourly_forecast, daily_forecast, eventList, numCalDaysToShow,
                                  topic, path_to_server_image)
+    upload_revision()
 
     logger.info("Completed dashboard update")
 
